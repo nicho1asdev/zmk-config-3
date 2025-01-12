@@ -1,23 +1,11 @@
-if SHIELD_DAC_MAN_5X6_LEFT
+if SHIELD_VIERA
 
 config ZMK_KEYBOARD_NAME
-    default "Dac-Man-5x6-L"
+    default "Viera Keyboard"
 
-config ZMK_SPLIT_BLE_ROLE_CENTRAL
-    default y
+config ZMK_BLE
+    default n
 
-endif
-
-if SHIELD_DAC_MAN_5X6_RIGHT
-
-config ZMK_KEYBOARD_NAME
-    default "Dac-Man-5x6-R"
-
-endif
-
-if SHIELD_DAC_MAN_5X6_LEFT || SHIELD_DAC_MAN_5X6_RIGHT
-
-config ZMK_SPLIT
+CONFIG_USB
     default y
 endif
-
