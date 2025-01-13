@@ -6,6 +6,6 @@ config ZMK_KEYBOARD_NAME
 config ZMK_BLE
     default n
 
-CONFIG_USB
+config ZMK_USB
     default y
 endif
