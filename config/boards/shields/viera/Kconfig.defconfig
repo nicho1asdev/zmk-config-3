@@ -1,4 +1,4 @@
-if SHIELD_VIERA
+if SHIELD_NAKED60
 
 config ZMK_KEYBOARD_NAME
     default "Viera Keyboard"
