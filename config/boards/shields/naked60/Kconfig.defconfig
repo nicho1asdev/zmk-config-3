@@ -8,4 +8,16 @@ config ZMK_BLE
 
 config ZMK_USB
     default y
+
+config ZMK_RGB_UNDERGLOW
+    default y
+
+config ZMK_RGB_UNDERGLOW_LED_COUNT
+    default 10
+
+config ZMK_RGB_UNDERGLOW_GPIO_PIN
+    default 7
+
+config ZMK_RGB_UNDERGLOW_GPIO_CONTROLLER
+    default "GPIO_0"
 endif
