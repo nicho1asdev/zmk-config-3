@@ -49,15 +49,14 @@
     };
     leds {
         compatible = "zmk,ws2812";
-        pinctrl-0 = <&pinctrl_rgb>;
         status = "okay";
         chain-length = <10>;
-
+    
         rgb_led: rgb_led_0 {
             gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
             label = "RGB";
         };
-
+    
         color = <255 0 0>;
         brightness = <128>;
     };
