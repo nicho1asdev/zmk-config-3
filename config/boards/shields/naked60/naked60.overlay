@@ -47,10 +47,18 @@
                 RC(4, 0) RC(4, 1) RC(4, 2)                            RC(4, 6)                            RC(4, 10) RC(4, 11) RC(4, 12) RC(4, 13) RC(4, 14)
         >;
     };
+};
+
+/ {
+    chosen {
+            zmk,backlight = &leds;
+    };
+
     leds {
         compatible = "gpio-leds";
         led_2 {
                 gpios = <&gpio1 15 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         };
-};
+    };
+
 };
