@@ -6,7 +6,6 @@
     chosen {
         zmk,kscan = &default_kscan;
         zmk,matrix_transform = &default_transform;
-        zmk,underglow = &led_strip;
     };
 
     default_kscan: kscan {
@@ -49,11 +48,5 @@
                 RC(3, 0) RC(3, 1) RC(3, 2) RC(3, 3) RC(3, 4) RC(3, 5) RC(3, 6) RC(3, 7) RC(3, 8) RC(3, 9) RC(3, 10) RC(3, 11) RC(3, 12) RC(3, 13) RC(3, 14)
                 RC(4, 0) RC(4, 1) RC(4, 2)                            RC(4, 6)                            RC(4, 10) RC(4, 11) RC(4, 12) RC(4, 13) RC(4, 14)
         >;
-    };
-
-    led_strip: ws2812_pio {
-        compatible   = "zmk,ws2812-pio";
-        gpios        = <&gpio1 7 GPIO_ACTIVE_HIGH>;
-        chain-length = <68>;
     };
 };
