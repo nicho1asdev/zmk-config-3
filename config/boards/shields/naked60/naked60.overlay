@@ -51,9 +51,9 @@
         >;
     };
 
-    led_strip: ws2812@0 {
+    led_strip: ws2812_pio {
         compatible   = "zmk,ws2812-pio";
         gpios        = <&gpio1 7 GPIO_ACTIVE_HIGH>;
-        chain-length = <10>;
+        chain-length = <68>;
     };
 };
