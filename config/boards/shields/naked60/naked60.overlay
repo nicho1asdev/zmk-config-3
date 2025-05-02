@@ -6,7 +6,7 @@
     chosen {
         zmk,kscan = &default_kscan;
         zmk,matrix_transform = &default_transform;
-        zmk,underglow = &led_strip;
+        zmk,underglow = &rgb_led;
     };
 
     default_kscan: kscan {
@@ -51,39 +51,12 @@
         >;
     };
 
-    pinctrl {
-        /* Assign GPIO7 (P1.07) for SPI MOSI */
-        spi3_default: spi3_default {
-            group1 { psels = <NRF_PSEL(SPIM_MOSI, 1, 7)>; };
-        };
-        spi3_sleep: spi3_sleep {
-            group1 {
-                psels = <NRF_PSEL(SPIM_MOSI, 1, 7)>;
-                low-power-enable;
-            };
-        };
-    };
-
-    spi3 {
-        #address-cells = <1>;
-        #size-cells = <0>;
-        compatible = "nordic,nrf-spim";
-        status = "okay";
-        pinctrl-0 = <&spi3_default>;
-        pinctrl-1 = <&spi3_sleep>;
-        pinctrl-names = "default", "sleep";
-        reg = <0>;
-
-        led_strip: ws2812@0 {
-            compatible = "worldsemi,ws2812-spi";       /* SK6812 uses WS2812 protocol */
-            reg = <0>;                                  /* Mandatory but ignored */
-            spi-max-frequency = <4000000>;              /* 4 MHz SPI clock */
-            chain-length = <10>;                        /* Number of SK6812 pixels */
-            spi-one-frame = <0x70>;                     /* ‘1’ bit timing */
-            spi-zero-frame = <0x40>;                    /* ‘0’ bit timing */
-            color-mapping = <LED_COLOR_ID_GREEN         /* SK6812 order: G, R, B */
-                             LED_COLOR_ID_RED
-                             LED_COLOR_ID_BLUE>;
-        };
+    rgb_led: ws2812-pio {
+        compatible = "zmk,ws2812-pio";
+        gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+        chain-length = <10>;
+        label = "RGB";
+        color = <255 0 0>;
+        brightness = <128>;
     };
 };
