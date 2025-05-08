@@ -9,4 +9,14 @@ config ZMK_BLE
 config ZMK_USB
     default y
 
+config ZMK_RGB_UNDERGLOW
+    bool
+    default y
+config ZMK_RGB_UNDERGLOW_LED_COUNT
+    int
+    default 68
+config ZMK_RGB_UNDERGLOW_ON_START
+    bool
+    default y
+
 endif
