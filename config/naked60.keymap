@@ -81,7 +81,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_TOG  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                   &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_BRI  &trans
-&trans  &trans  &trans                          &trans                          &trans  &trans  &trans  &rgb_ug RGB_BRD  &trans
+&trans  &trans  &trans                          &trans                          &trans  &trans  &trans  &rgb_ug RGB_BRD  &rgb_ug RGB_COLOR_HSB(0,0,100)
             >;
         };
     };
