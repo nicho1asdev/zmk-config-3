@@ -17,6 +17,6 @@ config ZMK_RGB_UNDERGLOW_LED_COUNT
     default 68
 config ZMK_RGB_UNDERGLOW_ON_START
     bool
-    default y
+    default n
 
 endif
