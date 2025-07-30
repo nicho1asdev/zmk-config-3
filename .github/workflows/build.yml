@@ -1,8 +1,6 @@
-on: [push, pull_request, workflow_dispatch]
-
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: yourusername/zmk/.github/workflows/build-user-config.yml@custom-effects
     with:
-      zmk_repo: https://github.com/urob/zmk
-      zmk_ref: main
+      zmk_repo: nicho1asdev/zmk
+      zmk_ref: custom-effects
