@@ -1,20 +1,9 @@
 name: Build ZMK Config
 
 on:
-  workflow_dispatch:
-    inputs:
-      zmk_repo:
-        description: 'ZMK Firmware Repository'
-        required: true
-        default: 'nicho/zmk'
-      zmk_ref:
-        description: 'ZMK Firmware Branch or Tag'
-        required: true
-        default: 'custom-effects'
+  push:
+  pull_request:
 
 jobs:
   build:
-    uses: nicho1asdev/zmk/.github/workflows/build-user-config.yml@custom-effects
-    with:
-      zmk_repo: ${{ github.event.inputs.zmk_repo }}
-      zmk_ref: ${{ github.event.inputs.zmk_ref }}
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
