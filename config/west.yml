@@ -1,11 +1,11 @@
 manifest:
   remotes:
-    - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+    - name: nicho
+      url-base: https://github.com/nicho1asdev
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: nicho
+      revision: custom-effects
       import: app/west.yml
   self:
     path: config
