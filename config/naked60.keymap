@@ -87,11 +87,11 @@
 
         layer_2 {
             bindings = <
-&trans  &rgb_ug RGB_COLOR_HSB(0,100,50)  &rgb_ug RGB_COLOR_HSB(246,100,50)  &rgb_ug RGB_COLOR_HSB(118,100,50)  &rgb_ug RGB_COLOR_HSB(273,100,50)  &rgb_ug RGB_COLOR_HSB(0,0,100)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                           &trans                             &trans                             &trans                             &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                           &trans                             &trans                             &trans                             &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans
-&trans  &trans                           &trans                             &trans                             &trans                             &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                           &trans                                                                                                                                   &trans                          &trans  &trans  &trans  &trans  &trans
+&trans  &rgb_ug RGB_COLOR_HSB(0,100,50)  &rgb_ug RGB_COLOR_HSB(246,100,50)  &rgb_ug RGB_COLOR_HSB(118,100,50)  &rgb_ug RGB_COLOR_HSB(273,100,50)  &rgb_ug RGB_COLOR_HSB(0,0,100)  &rgb_ug RGB_EFF  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans                           &trans                             &trans                             &trans                             &trans                          &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans                           &trans                             &trans                             &trans                             &trans                          &trans           &trans  &trans  &trans  &trans  &trans  &trans          &trans
+&trans  &trans                           &trans                             &trans                             &trans                             &trans                          &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans                           &trans                                                                                                                                   &trans                                   &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
