@@ -1,2 +1,0 @@
-config SHIELD_NAKED60
-    def_bool $(shields_list_contains,naked60)
