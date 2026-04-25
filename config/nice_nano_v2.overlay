@@ -1,9 +1,15 @@
 #include <dt-bindings/led/led.h>
 #include <dt-bindings/spi/spi.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
 / {
     chosen {
         zmk,underglow = &led_strip;
+    };
+
+    vcc_nrf: vcc_nrf {
+        compatible = "zmk,ext-power-generic";
+        control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
     };
 };
 
@@ -31,9 +37,9 @@
     led_strip: ws2812@0 {
         compatible         = "worldsemi,ws2812-spi";
         status             = "okay";
-        reg                = <0>;               /* ignored, required */
+        reg                = <0>;
         spi-max-frequency  = <4000000>;
-        chain-length       = <68>;              /* number of SK6812 */
+        chain-length       = <68>;
         spi-one-frame      = <0x70>;
         spi-zero-frame     = <0x40>;
         color-mapping      = <LED_COLOR_ID_GREEN
