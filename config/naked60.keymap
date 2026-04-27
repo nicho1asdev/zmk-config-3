@@ -65,11 +65,11 @@
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_ON   &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                   &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_BRI  &trans
-&trans  &trans  &trans                          &trans                          &trans  &trans  &trans  &rgb_ug RGB_BRD  &trans
+&trans  &rgb_ug RGB_EFF  &rgb_ug RGB_COLOR_HSB(0,0,100)  &rgb_ug RGB_COLOR_HSB(0,99,49)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans
+&trans  &trans           &trans                          &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_ON   &trans
+&trans  &trans           &trans                          &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                   &trans
+&trans  &trans           &trans                          &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_BRI  &trans
+&trans  &trans           &trans                                                                          &trans                          &trans  &trans  &trans  &rgb_ug RGB_BRD  &trans
             >;
         };
     };
