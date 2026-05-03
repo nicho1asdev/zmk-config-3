@@ -1,4 +1,5 @@
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
@@ -50,26 +51,66 @@
     //     };
     // };
 
+    behaviors {
+        soft_off_hold: soft_off_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SOFT_OFF_HOLD";
+            bindings = <&soft_off>, <&none>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <3>;
+        };
+
+        rgb_behavior: rgb_behavior {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RGB_BEHAVIOR";
+            bindings = <&lt>, <&rgb_ug>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <3>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp ESC    &kp N1     &kp N2    &kp N3  &kp N4  &kp N5  &kp N6     &kp N7  &kp N8  &kp N9     &kp N0    &kp MINUS  &kp EQUAL       &kp BSPC        &soft_off
-&kp TAB    &kp Q      &kp W     &kp E   &kp R   &kp T   &kp Y      &kp U   &kp I   &kp O      &kp P     &kp LBKT   &kp RBKT        &kp ENTER       &bootloader
-&kp CAPS   &kp A      &kp S     &kp D   &kp F   &kp G   &kp H      &kp J   &kp K   &kp L      &kp SEMI  &kp APOS   &lt 1 X                         &ext_power EP_ON
-&kp LSHFT  &kp SE_LT  &kp Z     &kp X   &kp C   &kp V   &kp B      &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH   &kp RSHFT       &kp UP_ARROW    &ext_power EP_OFF
+&kp ESC    &kp N1     &kp N2    &kp N3  &kp N4  &kp N5  &kp N6     &kp N7  &kp N8  &kp N9     &kp N0    &kp MINUS  &kp EQUAL       &kp BSPC        &soft_off_hold 0 0
+&kp TAB    &kp Q      &kp W     &kp E   &kp R   &kp T   &kp Y      &kp U   &kp I   &kp O      &kp P     &kp LBKT   &kp RBKT        &kp ENTER       &rgb_behavior 3 RGB_TOG
+&kp CAPS   &kp A      &kp S     &kp D   &kp F   &kp G   &kp H      &kp J   &kp K   &kp L      &kp SEMI  &kp APOS   &lt 1 X                         &sl 2
+&kp LSHFT  &kp SE_LT  &kp Z     &kp X   &kp C   &kp V   &kp B      &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH   &kp RSHFT       &kp UP_ARROW    &sl 1
 &kp LCTRL  &kp LALT   &kp LGUI                          &kp SPACE                             &kp RGUI  &kp RALT   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
         };
 
-        layer_1 {
+        power {
             bindings = <
-&trans  &rgb_ug RGB_EFF  &rgb_ug RGB_COLOR_HSB(0,0,100)  &rgb_ug RGB_COLOR_HSB(0,99,49)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans
-&trans  &trans           &trans                          &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_ON   &trans
-&trans  &trans           &trans                          &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                   &trans
-&trans  &trans           &trans                          &trans                          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rgb_ug RGB_BRI  &trans
-&trans  &trans           &trans                                                                          &trans                          &trans  &trans  &trans  &rgb_ug RGB_BRD  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &sys_reset
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bootloader
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                          &trans                          &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        bt {
+            bindings = <
+&bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans
+&trans          &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &trans        &trans                                                  &trans                          &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        rgb {
+            bindings = <
+&trans  &rgb_ug RGB_COLOR_HSB(0,0,100)  &rgb_ug RGB_COLOR_HSB(0,100,50)  &rgb_ug RGB_COLOR_HSB(227,100,50)  &rgb_ug RGB_COLOR_HSB(115,100,50)  &rgb_ug RGB_COLOR_HSB(194,100,50)  &trans  &trans  &trans  &trans  &trans             &trans            &trans           &trans           &trans
+&trans  &trans                          &trans                           &trans                             &trans                             &trans                             &trans  &trans  &trans  &trans  &trans             &trans            &trans           &trans           &trans
+&trans  &trans                          &trans                           &trans                             &trans                             &trans                             &trans  &trans  &trans  &trans  &trans             &trans            &trans                            &trans
+&trans  &trans                          &trans                           &trans                             &trans                             &trans                             &trans  &trans  &trans  &trans  &trans             &trans            &trans           &rgb_ug RGB_BRI  &trans
+&trans  &trans                          &trans                                                                                                                                    &trans                          &ext_power EP_OFF  &ext_power EP_ON  &rgb_ug RGB_EFR  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF
             >;
         };
     };
