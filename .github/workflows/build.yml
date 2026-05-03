@@ -99,6 +99,24 @@ jobs:
         working-directory: ${{ env.base_dir }}
         run: west update
 
+      # custom-effects fork mistakenly sources $(BOARD_DIR)/Kconfig.defconfig before
+      # Kconfig.zephyr; BOARD_DIR is unset there, so Kconfig resolves /Kconfig.defconfig.
+      # Board defconfig is already loaded via KCONFIG_BOARD_DIR in Kconfig.zephyr.
+      - name: Remove premature BOARD_DIR Kconfig source (ZMK fork workaround)
+        working-directory: ${{ env.base_dir }}
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p = Path("zmk/app/Kconfig")
+          if not p.is_file():
+              raise SystemExit(0)
+          line = 'source "$(BOARD_DIR)/Kconfig.defconfig"\n'
+          text = p.read_text()
+          if line in text:
+              p.write_text(text.replace(line, ""))
+              print("Removed erroneous BOARD_DIR Kconfig source from", p)
+          PY
+
       - name: Patch ws2812-spi binding (Zephyr requires root description)
         working-directory: ${{ env.base_dir }}
         run: |
